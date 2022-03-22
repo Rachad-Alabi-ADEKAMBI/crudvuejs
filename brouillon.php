@@ -6,9 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/vue@next"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js" integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  
-    
+
     <title>crud vuejs</title>
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -95,21 +93,85 @@
                                     </thead>
 
                                     <tbody>
-                                        <tr class="class-center" v-for="user in users">
+                                        <tr class="class-center">
                                             <td>
-                                                {{ users.id }}
+                                                1
                                             </td>
 
                                             <td>
-                                                {{ users.name}}
+                                                Wolfmania
                                             </td>
 
                                             <td>
-                                               {{ users.phone}}
+                                                Wolf@gmail.com
                                             </td>
 
                                             <td>
-                                                {{ users.phone}}
+                                                4587555557
+                                            </td>
+
+                                            <td>
+                                                <a href="" class="text-success"
+                                                @click="showEditModal=true">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                            </td>
+
+                                            <td>
+                                                <a href="" class="text-danger"
+                                                    @click="showDeleteModal=true">
+                                                    <i class="fas fa-trash"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+
+                                        <tr class="class-center">
+                                            <td>
+                                                2
+                                            </td>
+
+                                            <td>
+                                                Wolfmania
+                                            </td>
+
+                                            <td>
+                                                Wolf@gmail.com
+                                            </td>
+
+                                            <td>
+                                                4587555557
+                                            </td>
+
+                                            <td>
+                                                <a href="" class="text-success"
+                                                @click="showEditModal=true">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                            </td>
+
+                                            <td>
+                                                <a href="" class="text-danger"
+                                                    @click="showDeleteModal=true">
+                                                    <i class="fas fa-trash"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+
+                                        <tr class="class-center">
+                                            <td>
+                                                3
+                                            </td>
+
+                                            <td>
+                                                Wolfmania
+                                            </td>
+
+                                            <td>
+                                                Wolf@gmail.com
+                                            </td>
+
+                                            <td>
+                                                4587555557
                                             </td>
 
                                             <td>
@@ -259,7 +321,8 @@
     </div>
 
     
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js" integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  
                 <script>
                     const ConditionalRendering = Vue.createApp({
                         data(){
@@ -272,26 +335,18 @@
                                 users: [],
                                 newUser: { name: "", email:"", phone: ""},
                                 currentUser: {}
-                            }
-                        },
-                        mounted: function(){
-                            this.getAllUsers();
-                        },
+                            },
 
-                        methods: {
+                            methods: {
                                     getAllUsers(){
-                                        axios.get("https://localhost/crudvuejs/process.php?action=read").then(function(response){
+                                        axios.get("http://localhost/crudvuejs/process.php?action=read").then(function(response){
                                             if(response.data.error){
-                                                ConditionalRendering.errorMsg = response.data.message;
-                                            }
-                                            else{
-                                                    ConditionalRendering.users = response.data.users;
+
                                             }
                                         })
                                     }
-                                    
+                            }
                         }
-                        
                     });
 
                     ConditionalRendering.mount('#conditional-rendering')
